@@ -1,11 +1,11 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
-image: /img/home-jumbotron.jpg
-heading: Great coffee with a conscience
-subheading: Support sustainable farming while enjoying a cup
+title: Work remotely from Asia
+image: 
+heading: Work remotely from Asia
+subheading: Make a living while you're at home
 mainpitch:
-  title: Why Kaldi
+  title: Why work remotely?
   description: >
     Kaldi is the coffee store for everyone who believes that great coffee
     shouldn't just taste good, it should do good too. We source all of our beans
