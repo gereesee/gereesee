@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Notepad could be the greatest productivity tool for remote workers
 date: 2020-11-21T08:46:10.000Z
 featuredpost: false
-featuredimage: /img/notepad_as_productivity_tool.png
+featuredimage: /img/notepad_as_a_productvity_tool_banner.png
 description: How to use notepad as your main productivity tool
 tags:
   - productivity
