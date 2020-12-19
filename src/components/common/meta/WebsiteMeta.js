@@ -8,7 +8,6 @@ import ImageMeta from './ImageMeta'
 import config from '../../../utils/siteConfig'
 
 const WebsiteMeta = ({ data, canonical, title, description, image, type }) => {
-
     const publisherLogo = url.resolve(config.siteUrl, config.siteIcon)
     let shareImage = image
 
@@ -76,13 +75,6 @@ WebsiteMeta.propTypes = {
         description: PropTypes.string,
         bio: PropTypes.string,
         profile_image: PropTypes.string,
-    }).isRequired,
-    settings: PropTypes.shape({
-        logo: PropTypes.object,
-        description: PropTypes.string,
-        title: PropTypes.string,
-        twitter: PropTypes.string,
-        allGhostSettings: PropTypes.object.isRequired,
     }).isRequired,
     canonical: PropTypes.string.isRequired,
     title: PropTypes.string,

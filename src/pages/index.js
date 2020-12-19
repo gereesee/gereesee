@@ -17,7 +17,6 @@ import MetaData from '../components/common/meta/MetaData'
 */
 const Index = ({ data, location }) => {
     const posts = data.allMarkdownRemark.edges;
-
     return (
         <>
             <MetaData location={location} />
@@ -63,6 +62,7 @@ export const query = graphql`
     allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
       edges {
         node {
+          id
           excerpt
           timeToRead
           wordCount {
