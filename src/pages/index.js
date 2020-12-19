@@ -15,7 +15,7 @@ import MetaData from '../components/common/meta/MetaData'
 * in /utils/siteConfig.js under `postsPerPage`.
 *
 */
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
     const posts = data.allMarkdownRemark.edges;
 
     return (
@@ -41,9 +41,9 @@ Index.propTypes = {
     data: PropTypes.shape({
       allMarkdownRemark: PropTypes.object.isRequired,
     }).isRequired, 
-//     location: PropTypes.shape({
-//         pathname: PropTypes.string.isRequired,
-//     }).isRequired,
+    location: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+    }).isRequired,
 //     pageContext: PropTypes.object,
 }
 
