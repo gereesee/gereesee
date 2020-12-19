@@ -60,9 +60,6 @@ MetaData.propTypes = {
         ghostAuthor: PropTypes.object,
         ghostPage: PropTypes.object,
     }).isRequired,
-    settings: PropTypes.shape({
-        allGhostSettings: PropTypes.object.isRequired,
-    }).isRequired,
     location: PropTypes.shape({
         pathname: PropTypes.string.isRequired,
     }).isRequired,
@@ -71,3 +68,5 @@ MetaData.propTypes = {
     image: PropTypes.string,
     type: PropTypes.string,
 }
+
+export default MetaData

@@ -4,35 +4,33 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import url from 'url'
 
-// import getAuthorProperties from './getAuthorProperties'
 import ImageMeta from './ImageMeta'
 import config from '../../../utils/siteConfig'
 
-// import { tags as tagsHelper } from '@tryghost/helpers'
-
 const ArticleMetaGhost = ({ data, canonical }) => {
-    const blogPost = data
+    const blogPost = data.markdownRemark;
+    const postFrontmatter = blogPost.frontmatter;
 
-    // const author = getAuthorProperties(blogPost.primary_author)
-    // const publicTags = _.map(tagsHelper(blogPost, { visibility: `public`, fn: tag => tag }), `name`)
-    // const primaryTag = publicTags[0] || ``
-    const shareImage = blogPost.frontmatter.featuredimage  ? blogPost.frontmatter.featuredimage  : _.get(config, `cover_image`, null)
+    const author = config.defaultAuthor;
+    const publicTags = postFrontmatter.tags;
+    const primaryTag = publicTags[0] || ``
+    const shareImage = postFrontmatter.featuredimage  ? postFrontmatter.featuredimage  : _.get(config, `cover_image`, null)
     const publisherLogo = config.siteIcon ? url.resolve(config.siteUrl, config.siteIcon) : null
 
     const jsonLd = {
         "@context": `https://schema.org/`,
         "@type": `Article`,
-        // author: {
-        //     "@type": `Person`,
-        //     name: author.name,
-        //     image: author.image ? author.image : undefined,
-        //     sameAs: author.sameAsArray ? author.sameAsArray : undefined,
-        // },
-        // keywords: publicTags.length ? publicTags.join(`, `) : undefined,
-        headline: blogPost.meta_title || blogPost.frontmatter.title,
+        author: {
+            "@type": `Person`,
+            name: author.name,
+            image: author.image ? author.image : undefined,
+            sameAs: author.sameAsArray ? author.sameAsArray : undefined,
+        },
+        keywords: publicTags.length ? publicTags.join(`, `) : undefined,
+        headline: postFrontmatter.title,
         url: canonical,
-        datePublished: blogPost.published_at,
-        dateModified: blogPost.updated_at,
+        datePublished: postFrontmatter.date,
+        dateModified: postFrontmatter.date,
         image: shareImage ? {
             "@type": `ImageObject`,
             url: shareImage,
@@ -49,7 +47,7 @@ const ArticleMetaGhost = ({ data, canonical }) => {
                 height: 60,
             },
         },
-        description: blogPost.meta_description || blogPost.excerpt,
+        description: blogPost.excerpt,
         mainEntityOfPage: {
             "@type": `WebPage`,
             "@id": config.siteUrl,
@@ -59,51 +57,43 @@ const ArticleMetaGhost = ({ data, canonical }) => {
     return (
         <>
             <Helmet>
-                <title>{blogPost.meta_title || blogPost.frontmatter.title}</title>
-                <meta name="description" content={blogPost.meta_description || blogPost.excerpt} />
+                <title>{postFrontmatter.title}</title>
+                <meta name="description" content={blogPost.excerpt} />
                 <link rel="canonical" href={canonical} />
 
                 <meta property="og:site_name" content={config.title} />
                 <meta property="og:type" content="article" />
                 <meta property="og:title"
                     content={
-                        blogPost.og_title ||
-                        blogPost.meta_title ||
-                        blogPost.frontmatter.title
+                        postFrontmatter.title
                     }
                 />
                 <meta property="og:description"
                     content={
-                        blogPost.og_description ||
-                        blogPost.excerpt ||
-                        blogPost.meta_description
+                        blogPost.excerpt
                     }
                 />
                 <meta property="og:url" content={canonical} />
-                <meta property="article:published_time" content={blogPost.published_at} />
-                <meta property="article:modified_time" content={blogPost.updated_at} />
-                {/* {publicTags.map((keyword, i) => (<meta property="article:tag" content={keyword} key={i} />))} */}
-                {/* {author.facebookUrl && <meta property="article:author" content={author.facebookUrl} />} */}
+                <meta property="article:published_time" content={postFrontmatter.date} />
+                <meta property="article:modified_time" content={postFrontmatter.date} />
+                {publicTags.map((keyword, i) => (<meta property="article:tag" content={keyword} key={i} />))}
+                {author.authorProfiles.website && <meta property="article:author" content={author.authorProfiles.website} />}
 
                 <meta name="twitter:title"
                     content={
-                        blogPost.twitter_title ||
-                        blogPost.meta_title ||
-                        blogPost.frontmatter.title
+                        postFrontmatter.title
                     }
                 />
                 <meta name="twitter:description"
                     content={
-                        blogPost.twitter_description ||
-                        blogPost.excerpt ||
-                        blogPost.meta_description
+                        blogPost.excerpt
                     }
                 />
                 <meta name="twitter:url" content={canonical} />
                 <meta name="twitter:label1" content="Written by" />
-                {/* <meta name="twitter:data1" content={author.name} /> */}
-                {/* {primaryTag && <meta name="twitter:label2" content="Filed under" />}
-                {primaryTag && <meta name="twitter:data2" content={primaryTag} />} */}
+                <meta name="twitter:data1" content={author.twitterName} />
+                {primaryTag && <meta name="twitter:label2" content="Filed under" />}
+                {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
 
                 {/* {settings.twitter && <meta name="twitter:site" content={`https://twitter.com/${settings.twitter.replace(/^@/, ``)}/`} />}
                 {settings.twitter && <meta name="twitter:creator" content={settings.twitter} />} */}
@@ -116,34 +106,19 @@ const ArticleMetaGhost = ({ data, canonical }) => {
 
 ArticleMetaGhost.propTypes = {
     data: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        published_at: PropTypes.string.isRequired,
-        updated_at: PropTypes.string.isRequired,
-        meta_title: PropTypes.string,
-        meta_description: PropTypes.string,
-        primary_author: PropTypes.object.isRequired,
-        tags: PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string,
-                slug: PropTypes.string,
-                visibility: PropTypes.string,
-            })
-        ),
-        primaryTag: PropTypes.shape({
-            name: PropTypes.string,
+        markdownRemark: PropTypes.shape({
+          frontmatter: PropTypes.shape({
+            featuredimage: PropTypes.string,
+            title: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            tags: PropTypes.array,
+            date: PropTypes.string,
+          }),
+          html: PropTypes.string.isRequired,
+          excerpt: PropTypes.string.isRequired,
         }),
-        og_title: PropTypes.string,
-        og_description: PropTypes.string,
-        twitter_title: PropTypes.string,
-        twitter_description: PropTypes.string,
-        excerpt: PropTypes.string.isRequired,
-    }).isRequired,
-    settings: PropTypes.shape({
-        logo: PropTypes.object,
-        title: PropTypes.string,
-        twitter: PropTypes.string,
-        allGhostSettings: PropTypes.object.isRequired,
-    }).isRequired,
+      }).isRequired,
     canonical: PropTypes.string.isRequired,
 }
 
+export default ArticleMetaGhost

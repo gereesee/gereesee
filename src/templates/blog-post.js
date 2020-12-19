@@ -12,15 +12,14 @@ import MetaData from '../components/common/meta/MetaData'
 *
 */
 const BlogPost = ({ data, location }) => {
-  console.log('location', location);
   const post = data.markdownRemark;
     return (
         <>
-            {/* <MetaData
+            <MetaData
                 data={data}
                 location={location}
                 type="blogPost"
-            /> */}
+            />
             <Layout>
                 <div className="container">
                     <article className="content">
@@ -51,6 +50,7 @@ BlogPost.propTypes = {
           featuredimage: PropTypes.string,
           title: PropTypes.string.isRequired,
           description: PropTypes.string.isRequired,
+          tags: PropTypes.array,
         }),
         html: PropTypes.string.isRequired,
       }),
@@ -64,10 +64,13 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
       html
+      excerpt
       frontmatter {
         title
         featuredimage
         description
+        tags
+        date
       }
     }
   }
