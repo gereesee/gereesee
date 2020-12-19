@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 // import { Layout, PostCard, Pagination } from '../components/common'
 import Layout from '../components/common/Layout'
 import PostCard from '../components/common/PostCard'
-// import { MetaData } from '../components/common/meta'
+import MetaData from '../components/common/meta/MetaData'
 
 /**
 * Main index page (home page)
@@ -20,7 +20,7 @@ const Index = ({ data }) => {
 
     return (
         <>
-            {/* <MetaData location={location} /> */}
+            <MetaData location={location} />
             <Layout isHome={true}>
                 <div className="container">
                     <section className="post-feed">

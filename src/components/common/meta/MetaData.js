@@ -4,7 +4,7 @@ import url from 'url'
 
 import config from '../../../utils/siteConfig'
 import ArticleMeta from './ArticleMeta'
-// import WebsiteMeta from './WebsiteMeta'
+import WebsiteMeta from './WebsiteMeta'
 // import AuthorMeta from './AuthorMeta'
 
 /**
@@ -25,26 +25,22 @@ const MetaData = ({
                 data={data}
                 canonical={canonical}
             />);
+        default: {
+            const title = config.siteTitleMeta
+            const description = config.siteDescriptionMeta
+            const image = config.cover_image
 
-        // TODO
-        // default: {
-        //     title = title || config.siteTitleMeta || settings.title
-        //     description = description || config.siteDescriptionMeta || settings.description
-        //     image = image || settings.cover_image || null
-
-        //     image = image ? url.resolve(config.siteUrl, image) : null
-
-        //     return (
-        //         <WebsiteMeta
-        //             data={{}}
-        //             canonical={canonical}
-        //             title={title}
-        //             description={description}
-        //             image={image}
-        //             type="WebSite"
-        //         />
-        //     )
-        // }
+            return (
+                <WebsiteMeta
+                    data={{}}
+                    canonical={canonical}
+                    title={title}
+                    description={description}
+                    image={image}
+                    type="WebSite"
+                />
+            )
+        }
         
     }
 }
