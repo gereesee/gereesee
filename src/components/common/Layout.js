@@ -50,7 +50,7 @@ const Layout = ({ children, isHome }) => {
                                     {/* <Navigation data={site.navigation} navClass="site-nav-item" /> */}
                                 </div>
                                 <div className="site-nav-right">
-                                    <Link className="site-nav-button" to="/">About</Link>
+                                    <Link className="site-nav-button" to="/about">About</Link>
                                 </div>
                             </nav>
                         </div>
