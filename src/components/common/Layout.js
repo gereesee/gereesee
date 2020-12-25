@@ -71,6 +71,10 @@ const Layout = ({ children, isHome }) => {
                                 <Link to="/">{config.title}</Link> © 2020
                             </div>
                             <div className="site-foot-nav-right">
+                                Illustrations by 
+                                <Link to="https://streamlineicons.com/">streamlineicons.com</Link>
+                                <Link to="https://icons8.com/">icons8.com</Link>
+                                <Link to="https://unsplash.com/">unsplash.com</Link>
                                 {/* <Navigation data={site.navigation} navClass="site-foot-nav-item" /> */}
                             </div>
                         </div>

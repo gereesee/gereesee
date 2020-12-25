@@ -22,7 +22,7 @@ export default {
     themeColor: `#15171A`, // Used for Offline Manifest
 
     lang: `en`,
-    cover_image: `https://static.ghost.org/v1.0.0/images/blog-cover.jpg`,
+    cover_image: `/img/gereesee_oddiig_tooly_cover.jpg`,
     logo: `/img/gereesee_logo.png`,
     title: `gereesee.com`,
     description: `Practical tips and tricks for remote workers`,

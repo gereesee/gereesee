@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: Notepad could be the greatest productivity tool for remote workers
-date: 2020-11-21T08:46:10.000Z
+date: 2020-12-24T08:46:10.000Z
 featuredpost: false
 featuredimage: /img/notepad_as_a_productvity_tool_banner.png
 description: How to use notepad as your main productivity tool
@@ -9,7 +9,6 @@ tags:
   - productivity
   - tools
   - battle-tested
-  - hoho
 ---
 You might be surprised, but the Notepad is by far, the fastest and most compact way to keep track of your daily work. You just have to learn hot to use it like a pro. Here is what you need: 
 
