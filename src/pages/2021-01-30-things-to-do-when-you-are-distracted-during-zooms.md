@@ -4,7 +4,7 @@ title: 3 Things to do when you keep getting distracted during Zoom calls
 date: 2021-01-30T07:57:00.000Z
 featuredpost: false
 featuredimage: /img/keep_your_attention_during_zoom_calls.png
-description: The only piece of advice I found useful when I feel down
+description: About keeping your attention during zoom calls
 tags:
   - focus
   - battle-tested
