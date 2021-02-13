@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.gereesee.com">
-    <img alt="gereesee-logo" src="static/favicon.png" width="60" />
+    <img alt="gereesee-logo" src="docs/img/icon.png" width="60" />
   </a>
 </p>
 <h1 align="center">
@@ -12,3 +12,5 @@ A simple blog for remote workers by remote workers. Built with [Gatsby](https://
 Deployment state: 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a432eaf4-b4be-4c44-b823-d4097f90606d/deploy-status)](https://app.netlify.com/sites/www-gereesee-com/deploys)
+
+*Illustration by [streamlineicons.com](https://streamlineicons.com/)*
