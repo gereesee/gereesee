@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.gereesee.com">
-    <img alt="gereesee-logo" src="docs/img/icon.png" width="60" />
+    <img alt="gereesee-logo" src="docs/img/icon.png" width="100" />
   </a>
 </p>
 <h1 align="center">
