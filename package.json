@@ -19,8 +19,7 @@
     "gatsby-transformer-remark": "^2.12.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0",
-    "utterances-react": "^0.1.3"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "eslint": "^7.15.0",

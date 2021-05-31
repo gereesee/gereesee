@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Utterances from "utterances-react"
 
 import Layout from '../components/common/Layout'
 import MetaData from '../components/common/meta/MetaData'
@@ -36,22 +35,8 @@ const BlogPost = ({ data, location }) => {
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
                             />
-                        <i>Leave a comment:</i>
                         </section>
                     </article>
-                    <Utterances
-                      repo="gereesee/gereesee"
-                      issueTerm="title"
-                      label="comment"
-                      theme="github-light"
-                      crossorigin="anonymous"
-                      async={false}
-                      style={`
-                      & .utterances {
-                        max-width: 950px;
-                      }
-                    `}
-                    />
                 </div>
             </Layout>
         </>
