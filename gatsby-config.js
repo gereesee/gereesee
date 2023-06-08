@@ -7,7 +7,7 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Zolo's Blog`
+    title: `Zolo's Blog`,
   },
   plugins: [
     {
@@ -17,6 +17,13 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    `gatsby-transformer-remark`
+    {
+      resolve: `@isamrish/gatsby-plugin-google-adsense`,
+      options: {
+        googleAdClientId: "ca-pub-9705299065641577",
+        head: true, // Optional
+      },
+    },
+    `gatsby-transformer-remark`,
   ],
 }
